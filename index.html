@@ -351,15 +351,107 @@
       100% { transform: scale(1); opacity: 1; }
     }
     
-    .cake {
-      font-size: 8rem;
-      margin-bottom: 30px;
+    .custom-cake {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin: 0 auto 30px;
       animation: cakeBounce 1s ease-in-out infinite alternate;
     }
     
     @keyframes cakeBounce {
       0% { transform: translateY(0); }
       100% { transform: translateY(-10px); }
+    }
+    
+    .cake-base {
+      position: absolute;
+      bottom: 0;
+      left: 50px;
+      width: 200px;
+      height: 80px;
+      background: linear-gradient(to bottom, #f9d5cc, #e67e7e);
+      border-radius: 10px 10px 50px 50px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cake-middle {
+      position: absolute;
+      bottom: 80px;
+      left: 30px;
+      width: 240px;
+      height: 60px;
+      background: linear-gradient(to bottom, #f8c6c6, #d86c6c);
+      border-radius: 15px 15px 10px 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cake-top {
+      position: absolute;
+      bottom: 140px;
+      left: 20px;
+      width: 260px;
+      height: 40px;
+      background: linear-gradient(to bottom, #f5b5b5, #d35454);
+      border-radius: 20px 20px 15px 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cake-decoration {
+      position: absolute;
+      bottom: 140px;
+      left: 20px;
+      width: 260px;
+      height: 10px;
+      background: #ffd700;
+      border-radius: 10px;
+    }
+    
+    .cake-name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #d35454;
+      font-family: 'Dancing Script', cursive;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+      z-index: 10;
+    }
+    
+    .candle {
+      position: absolute;
+      bottom: 180px;
+      width: 6px;
+      height: 30px;
+      background: linear-gradient(to bottom, #ff6b6b, #ff8e8e, #ff6b6b);
+      border-radius: 3px;
+    }
+    
+    .candle:nth-child(1) { left: 60px; }
+    .candle:nth-child(2) { left: 120px; }
+    .candle:nth-child(3) { left: 180px; }
+    .candle:nth-child(4) { left: 240px; }
+    
+    .flame {
+      position: absolute;
+      bottom: 210px;
+      width: 12px;
+      height: 20px;
+      background: linear-gradient(to bottom, #ffd700, #ff8c00, #ff4500);
+      border-radius: 50% 50% 20% 20%;
+      animation: flicker 1.5s ease-in-out infinite alternate;
+    }
+    
+    .flame:nth-child(1) { left: 57px; }
+    .flame:nth-child(2) { left: 117px; }
+    .flame:nth-child(3) { left: 177px; }
+    .flame:nth-child(4) { left: 237px; }
+    
+    @keyframes flicker {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.8); opacity: 0.8; }
     }
     
     .cake-message {
@@ -374,17 +466,6 @@
     @keyframes textGlow {
       0% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700; }
       100% { text-shadow: 0 0 30px #ffd700, 0 0 40px #ffd700, 0 0 50px #ffd700; }
-    }
-    
-    .candles {
-      font-size: 3rem;
-      margin: 20px 0;
-      animation: candleFlicker 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes candleFlicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
     }
     
     .continue-btn {
@@ -405,6 +486,12 @@
     @keyframes buttonPulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
+    }
+    
+    .continue-btn:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 12px 25px rgba(255, 107, 107, 0.6);
+      background: linear-gradient(145deg, #ff5722, #ff6b6b);
     }
     
     .live-cake-title {
@@ -566,16 +653,43 @@
         padding: 20px 15px;
       }
       
-      .cake {
-        font-size: 5rem;
+      .custom-cake {
+        width: 250px;
+        height: 170px;
       }
+      
+      .cake-base {
+        width: 150px;
+        left: 50px;
+      }
+      
+      .cake-middle {
+        width: 190px;
+        left: 30px;
+      }
+      
+      .cake-top {
+        width: 210px;
+        left: 20px;
+      }
+      
+      .cake-decoration {
+        width: 210px;
+        left: 20px;
+      }
+      
+      .candle:nth-child(1) { left: 50px; }
+      .candle:nth-child(2) { left: 100px; }
+      .candle:nth-child(3) { left: 150px; }
+      .candle:nth-child(4) { left: 200px; }
+      
+      .flame:nth-child(1) { left: 47px; }
+      .flame:nth-child(2) { left: 97px; }
+      .flame:nth-child(3) { left: 147px; }
+      .flame:nth-child(4) { left: 197px; }
       
       .cake-message {
         font-size: 1.8rem;
-      }
-      
-      .candles {
-        font-size: 2rem;
       }
       
       .cake-builder {
@@ -624,9 +738,61 @@
         font-size: 1.5rem;
       }
       
-      .cake {
-        font-size: 4rem;
+      .custom-cake {
+        width: 200px;
+        height: 140px;
       }
+      
+      .cake-base {
+        width: 120px;
+        height: 60px;
+        left: 40px;
+      }
+      
+      .cake-middle {
+        width: 150px;
+        height: 50px;
+        bottom: 60px;
+        left: 25px;
+      }
+      
+      .cake-top {
+        width: 170px;
+        height: 30px;
+        bottom: 110px;
+        left: 15px;
+      }
+      
+      .cake-decoration {
+        width: 170px;
+        bottom: 110px;
+        left: 15px;
+      }
+      
+      .cake-name {
+        font-size: 18px;
+      }
+      
+      .candle {
+        height: 25px;
+        bottom: 135px;
+      }
+      
+      .candle:nth-child(1) { left: 40px; }
+      .candle:nth-child(2) { left: 80px; }
+      .candle:nth-child(3) { left: 120px; }
+      .candle:nth-child(4) { left: 160px; }
+      
+      .flame {
+        height: 15px;
+        width: 10px;
+        bottom: 160px;
+      }
+      
+      .flame:nth-child(1) { left: 37px; }
+      .flame:nth-child(2) { left: 77px; }
+      .flame:nth-child(3) { left: 117px; }
+      .flame:nth-child(4) { left: 157px; }
       
       .cake-message {
         font-size: 1.5rem;
@@ -714,8 +880,21 @@
 <!-- ANIMACIÓN DEL PASTEL -->
 <div id="cakeAnimation" class="cake-animation">
   <div class="cake-container">
-    <div class="cake">🎂</div>
-    <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
+    <div class="custom-cake">
+      <div class="cake-base"></div>
+      <div class="cake-middle"></div>
+      <div class="cake-top"></div>
+      <div class="cake-decoration"></div>
+      <div class="cake-name">Patricia</div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="flame"></div>
+      <div class="flame"></div>
+      <div class="flame"></div>
+      <div class="flame"></div>
+    </div>
     <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
     <button class="continue-btn" onclick="showExperience()">
       ✨ ¡Ver la Sorpresa! ✨
@@ -1030,8 +1209,21 @@
     
     // Mostrar pastel final con gran explosión
     container.innerHTML = `
-      <div class="cake">🎂</div>
-      <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
+      <div class="custom-cake">
+        <div class="cake-base"></div>
+        <div class="cake-middle"></div>
+        <div class="cake-top"></div>
+        <div class="cake-decoration"></div>
+        <div class="cake-name">Patricia</div>
+        <div class="candle"></div>
+        <div class="candle"></div>
+        <div class="candle"></div>
+        <div class="candle"></div>
+        <div class="flame"></div>
+        <div class="flame"></div>
+        <div class="flame"></div>
+        <div class="flame"></div>
+      </div>
       <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
       <button class="continue-btn" onclick="showExperience()">
         ✨ ¡Ver la Sorpresa! ✨
@@ -1060,12 +1252,22 @@
   }
   
   function showExperience() {
-    // Ocultar animación del pastel
-    document.getElementById('cakeAnimation').style.display = 'none';
+    // Efecto especial al hacer clic en el botón
+    const button = document.querySelector('.continue-btn');
+    button.innerHTML = '✨ ¡CARGANDO SORPRESA! ✨';
+    button.style.background = 'linear-gradient(145deg, #4ecdc4, #44a08d)';
     
-    // Mostrar pantalla de experiencia
-    document.getElementById('experienceScreen').classList.add('active');
-    window.scrollTo(0, 0);
+    // Crear explosión de confeti adicional
+    createCakeConfetti();
+    
+    setTimeout(() => {
+      // Ocultar animación del pastel
+      document.getElementById('cakeAnimation').style.display = 'none';
+      
+      // Mostrar pantalla de experiencia
+      document.getElementById('experienceScreen').classList.add('active');
+      window.scrollTo(0, 0);
+    }, 1500);
   }
   
   function showPhotoInBox(photoId, boxElement) {
