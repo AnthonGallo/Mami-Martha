@@ -514,6 +514,94 @@
       border-radius: 4px;
     }
     
+    /* NUEVO ESTILO PARA EL PASTEL CON NOMBRE */
+    .cake-with-name {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin: 40px auto;
+      perspective: 1000px;
+    }
+    
+    .cake-body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      animation: cakeRotate 15s infinite linear;
+    }
+    
+    @keyframes cakeRotate {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+    
+    .cake-layer-name {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ff6b6b);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .cake-layer-name:nth-child(2) {
+      transform: rotateY(180deg);
+      background: linear-gradient(45deg, #4ecdc4, #44a08d, #4ecdc4);
+    }
+    
+    .cake-topping {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 40px;
+      background: linear-gradient(to right, #ffd700, #ffed4e, #ffd700);
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cake-candle {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 50px;
+      background: linear-gradient(to bottom, #8b4513, #6b340e);
+      border-radius: 5px;
+      z-index: 5;
+    }
+    
+    .cake-flame {
+      position: absolute;
+      top: -75px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 30px;
+      background: linear-gradient(to bottom, #ff5722, #ffd700);
+      border-radius: 50% 50% 20% 20%;
+      animation: flameFlicker 1s infinite alternate;
+      z-index: 4;
+      box-shadow: 0 0 20px #ff5722, 0 0 40px #ffd700;
+    }
+    
+    @keyframes flameFlicker {
+      0% { transform: translateX(-50%) scale(1); }
+      100% { transform: translateX(-50%) scale(1.1) rotate(5deg); }
+    }
+    
     /* Responsive Design Improvements */
     @media (max-width: 1200px) {
       .celebration-title {
@@ -592,6 +680,15 @@
       .photo-gallery {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .cake-with-name {
+        width: 250px;
+        height: 170px;
+      }
+      
+      .cake-layer-name {
+        font-size: 2rem;
+      }
     }
     
     @media (max-width: 576px) {
@@ -654,6 +751,16 @@
         max-width: 200px;
         margin: 0 auto;
       }
+      
+      .cake-with-name {
+        width: 200px;
+        height: 140px;
+        margin: 20px auto;
+      }
+      
+      .cake-layer-name {
+        font-size: 1.8rem;
+      }
     }
     
     @media (max-width: 400px) {
@@ -684,6 +791,15 @@
       .magic-button {
         padding: 10px 25px;
         font-size: 1.2rem;
+      }
+      
+      .cake-with-name {
+        width: 180px;
+        height: 120px;
+      }
+      
+      .cake-layer-name {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -779,6 +895,17 @@
 <div id="experienceScreen" class="screen experience-screen">
   <div class="experience-container">
     <h1 class="celebration-title">🎉 ¡FELIZ CUMPLEAÑOS MAMÁ PATRICIA! 🎂</h1>
+    
+    <!-- PASTEL CON NOMBRE PATRICIA -->
+    <div class="cake-with-name">
+      <div class="cake-body">
+        <div class="cake-layer-name">Patricia</div>
+        <div class="cake-layer-name">❤️</div>
+      </div>
+      <div class="cake-topping"></div>
+      <div class="cake-candle"></div>
+      <div class="cake-flame"></div>
+    </div>
     
     <div class="interactive-sections">
       <!-- Sección de Recuerdos Especiales -->
