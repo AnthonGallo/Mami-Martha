@@ -514,168 +514,6 @@
       border-radius: 4px;
     }
     
-    /* NUEVOS ESTILOS PARA EL PASTEL 3D */
-    .cake-3d-container {
-      perspective: 1000px;
-      margin: 30px auto;
-      width: 300px;
-      height: 300px;
-      position: relative;
-    }
-    
-    .cake-3d {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateX(30deg) rotateY(20deg);
-      animation: cakeRotate 15s infinite linear;
-    }
-    
-    @keyframes cakeRotate {
-      0% { transform: rotateX(30deg) rotateY(0deg); }
-      100% { transform: rotateX(30deg) rotateY(360deg); }
-    }
-    
-    .cake-layer-3d {
-      position: absolute;
-      width: 200px;
-      height: 40px;
-      background: #f9c7c7;
-      border-radius: 10px;
-      left: 50px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Dancing Script', cursive;
-      font-weight: bold;
-      color: #8b4513;
-      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
-      transform-style: preserve-3d;
-    }
-    
-    .cake-layer-3d::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 10px;
-      background: #e6b0b0;
-      bottom: -10px;
-      border-radius: 0 0 10px 10px;
-      transform-origin: top;
-      transform: rotateX(-90deg);
-    }
-    
-    .layer-1 { bottom: 0; background: #f9c7c7; height: 50px; }
-    .layer-2 { bottom: 50px; background: #f5b5b5; height: 45px; }
-    .layer-3 { bottom: 95px; background: #f1a3a3; height: 40px; }
-    .layer-4 { bottom: 135px; background: #ed9191; height: 35px; }
-    .layer-5 { bottom: 170px; background: #e97f7f; height: 30px; }
-    .layer-6 { bottom: 200px; background: #e56d6d; height: 25px; }
-    .layer-7 { bottom: 225px; background: #e15b5b; height: 20px; }
-    .layer-8 { bottom: 245px; background: #dd4949; height: 15px; }
-    
-    .cake-topping {
-      position: absolute;
-      width: 220px;
-      height: 20px;
-      background: #ffd700;
-      border-radius: 10px;
-      left: 40px;
-      bottom: 260px;
-      transform-style: preserve-3d;
-    }
-    
-    .cake-topping::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 5px;
-      background: #e6be00;
-      bottom: -5px;
-      border-radius: 0 0 10px 10px;
-      transform-origin: top;
-      transform: rotateX(-90deg);
-    }
-    
-    .cake-candle {
-      position: absolute;
-      width: 10px;
-      height: 40px;
-      background: #ff6b6b;
-      border-radius: 5px;
-      bottom: 260px;
-      transform-style: preserve-3d;
-      z-index: 10;
-    }
-    
-    .cake-candle::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 5px;
-      background: #d45959;
-      bottom: -5px;
-      border-radius: 0 0 5px 5px;
-      transform-origin: top;
-      transform: rotateX(-90deg);
-    }
-    
-    .candle-flame {
-      position: absolute;
-      width: 15px;
-      height: 25px;
-      background: radial-gradient(orange, yellow, transparent);
-      border-radius: 50% 50% 20% 20%;
-      bottom: 300px;
-      animation: flameFlicker 1s infinite alternate;
-      transform-style: preserve-3d;
-    }
-    
-    @keyframes flameFlicker {
-      0% { transform: scale(1) rotate(-2deg); }
-      100% { transform: scale(1.1) rotate(2deg); }
-    }
-    
-    .candle-1 { left: 95px; }
-    .candle-2 { left: 145px; }
-    .candle-3 { right: 95px; }
-    
-    .patricia-name {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      font-family: 'Dancing Script', cursive;
-      font-size: 24px;
-      font-weight: bold;
-      color: #8b4513;
-      z-index: 5;
-      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    
-    .surprise-button {
-      background: linear-gradient(145deg, #ff6b6b, #ff5722);
-      color: white;
-      border: none;
-      padding: 15px 40px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 30px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
-      animation: buttonPulse 2s ease-in-out infinite;
-    }
-    
-    .surprise-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 25px rgba(255, 107, 107, 0.6);
-    }
-    
     /* Responsive Design Improvements */
     @media (max-width: 1200px) {
       .celebration-title {
@@ -754,25 +592,6 @@
       .photo-gallery {
         grid-template-columns: repeat(2, 1fr);
       }
-      
-      .cake-3d-container {
-        width: 250px;
-        height: 250px;
-      }
-      
-      .cake-layer-3d {
-        width: 160px;
-        left: 45px;
-      }
-      
-      .cake-topping {
-        width: 180px;
-        left: 35px;
-      }
-      
-      .patricia-name {
-        font-size: 20px;
-      }
     }
     
     @media (max-width: 576px) {
@@ -835,26 +654,6 @@
         max-width: 200px;
         margin: 0 auto;
       }
-      
-      .cake-3d-container {
-        width: 200px;
-        height: 200px;
-      }
-      
-      .cake-layer-3d {
-        width: 130px;
-        left: 35px;
-        font-size: 14px;
-      }
-      
-      .cake-topping {
-        width: 150px;
-        left: 25px;
-      }
-      
-      .patricia-name {
-        font-size: 16px;
-      }
     }
     
     @media (max-width: 400px) {
@@ -886,31 +685,6 @@
         padding: 10px 25px;
         font-size: 1.2rem;
       }
-      
-      .cake-3d-container {
-        width: 180px;
-        height: 180px;
-      }
-      
-      .cake-layer-3d {
-        width: 110px;
-        left: 35px;
-        font-size: 12px;
-      }
-      
-      .cake-topping {
-        width: 130px;
-        left: 25px;
-      }
-      
-      .cake-candle {
-        height: 30px;
-      }
-      
-      .candle-flame {
-        height: 20px;
-        bottom: 280px;
-      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
@@ -940,32 +714,10 @@
 <!-- ANIMACIÓN DEL PASTEL -->
 <div id="cakeAnimation" class="cake-animation">
   <div class="cake-container">
-    <div class="cake-3d-container">
-      <div class="cake-3d">
-        <div class="cake-layer-3d layer-1"></div>
-        <div class="cake-layer-3d layer-2"></div>
-        <div class="cake-layer-3d layer-3"></div>
-        <div class="cake-layer-3d layer-4"></div>
-        <div class="cake-layer-3d layer-5"></div>
-        <div class="cake-layer-3d layer-6"></div>
-        <div class="cake-layer-3d layer-7"></div>
-        <div class="cake-layer-3d layer-8">
-          <div class="patricia-name">Patricia</div>
-        </div>
-        <div class="cake-topping"></div>
-        <div class="cake-candle candle-1">
-          <div class="candle-flame" style="left: -2px;"></div>
-        </div>
-        <div class="cake-candle candle-2">
-          <div class="candle-flame" style="left: -2px;"></div>
-        </div>
-        <div class="cake-candle candle-3">
-          <div class="candle-flame" style="left: -2px;"></div>
-        </div>
-      </div>
-    </div>
+    <div class="cake">🎂</div>
+    <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
     <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
-    <button class="surprise-button" onclick="showSpecialSurprise()">
+    <button class="continue-btn" onclick="showExperience()">
       ✨ ¡Ver la Sorpresa! ✨
     </button>
   </div>
@@ -1278,32 +1030,10 @@
     
     // Mostrar pastel final con gran explosión
     container.innerHTML = `
-      <div class="cake-3d-container">
-        <div class="cake-3d">
-          <div class="cake-layer-3d layer-1"></div>
-          <div class="cake-layer-3d layer-2"></div>
-          <div class="cake-layer-3d layer-3"></div>
-          <div class="cake-layer-3d layer-4"></div>
-          <div class="cake-layer-3d layer-5"></div>
-          <div class="cake-layer-3d layer-6"></div>
-          <div class="cake-layer-3d layer-7"></div>
-          <div class="cake-layer-3d layer-8">
-            <div class="patricia-name">Patricia</div>
-          </div>
-          <div class="cake-topping"></div>
-          <div class="cake-candle candle-1">
-            <div class="candle-flame" style="left: -2px;"></div>
-          </div>
-          <div class="cake-candle candle-2">
-            <div class="candle-flame" style="left: -2px;"></div>
-          </div>
-          <div class="cake-candle candle-3">
-            <div class="candle-flame" style="left: -2px;"></div>
-          </div>
-        </div>
-      </div>
+      <div class="cake">🎂</div>
+      <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
       <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
-      <button class="surprise-button" onclick="showSpecialSurprise()">
+      <button class="continue-btn" onclick="showExperience()">
         ✨ ¡Ver la Sorpresa! ✨
       </button>
     `;
@@ -1326,44 +1056,6 @@
         sparklesContainer.appendChild(sparkle);
         setTimeout(() => { sparkle.remove(); }, 3000);
       }, i * 100);
-    }
-  }
-  
-  function showSpecialSurprise() {
-    // Crear una lluvia de corazones y estrellas
-    const sparklesContainer = document.querySelector('.sparkles');
-    for(let i = 0; i < 100; i++) {
-      setTimeout(() => {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        const surpriseTypes = ['❤️', '💖', '💕', '✨', '🌟', '🎂', '🎁', '🎉'];
-        sparkle.textContent = surpriseTypes[Math.floor(Math.random() * surpriseTypes.length)];
-        sparkle.style.left = Math.random() * 100 + 'vw';
-        sparkle.style.top = Math.random() * 100 + 'vh';
-        sparkle.style.fontSize = (Math.random() * 30 + 20) + 'px';
-        sparkle.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        sparklesContainer.appendChild(sparkle);
-        setTimeout(() => { sparkle.remove(); }, 5000);
-      }, i * 50);
-    }
-    
-    // Mostrar mensaje especial
-    const cakeMessage = document.querySelector('.cake-message');
-    cakeMessage.innerHTML = '¡Eres la mejor mamá del mundo!<br>Te amo ❤️';
-    cakeMessage.style.fontSize = '2.2rem';
-    cakeMessage.style.animation = 'textGlow 1.5s ease-in-out infinite alternate';
-    
-    // Hacer que el pastel brille
-    const cake3d = document.querySelector('.cake-3d');
-    cake3d.style.filter = 'brightness(1.5) drop-shadow(0 0 20px gold)';
-    
-    // Reproducir sonido de felicitación (si está permitido)
-    try {
-      const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbVtfdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/LMeSwFJHfH9N2QQAoRXrTp66VTFAtKn+D0wG0gCDKF0/L');
-      audio.volume = 0.3;
-      audio.play();
-    } catch (e) {
-      console.log('Audio no pudo ser reproducido');
     }
   }
   
