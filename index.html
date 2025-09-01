@@ -514,6 +514,28 @@
       border-radius: 4px;
     }
     
+    /* Responsive Design Improvements */
+    @media (max-width: 1200px) {
+      .celebration-title {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .celebration-title {
+        font-size: 2.5rem;
+      }
+      
+      .magic-title {
+        font-size: 2.2rem;
+      }
+      
+      .ingredients-instruction {
+        font-size: 1.2rem;
+        padding: 0 15px;
+      }
+    }
+    
     @media (max-width: 768px) {
       .magic-title {
         font-size: 2rem;
@@ -562,9 +584,17 @@
         padding: 15px;
         min-width: 170px;
       }
+      
+      .memory-card {
+        padding: 20px;
+      }
+      
+      .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
-    @media (max-width: 480px) {
+    @media (max-width: 576px) {
       .magic-title {
         font-size: 1.8rem;
       }
@@ -609,6 +639,51 @@
         margin: 20px auto;
         width: 100%;
         max-width: 300px;
+      }
+      
+      .magic-button {
+        padding: 12px 30px;
+        font-size: 1.3rem;
+      }
+      
+      .photo-gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .memory-box {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .magic-title {
+        font-size: 1.6rem;
+      }
+      
+      .celebration-title {
+        font-size: 1.6rem;
+      }
+      
+      .ingredients-instruction {
+        font-size: 1rem;
+      }
+      
+      .ingredient {
+        padding: 12px 5px;
+      }
+      
+      .ingredient-icon {
+        font-size: 2rem;
+      }
+      
+      .ingredient-name {
+        font-size: 0.9rem;
+      }
+      
+      .magic-button {
+        padding: 10px 25px;
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -709,7 +784,7 @@
       <!-- Sección de Recuerdos Especiales -->
       <div class="section">
         <h2 class="section-title">📸 Recuerdos Especiales</h2>
-        <div class="memory-card" onclick="showMemory(1)">
+        <div class="memory-card">
           <h3>💝 Tu Fortaleza Increíble</h3>
           <p>Solo pasaba a recordarte en tu día lo increíblemente fuerte que eres. La vida tiene sus momentos, pero tú tienes el temple para reinar el mundo. Nunca lo olvides.</p>
         </div>
@@ -1020,11 +1095,6 @@
     }
   }
   
-  function showMemory(memoryId) {
-    // Aquí puedes implementar la lógica para mostrar recuerdos específicos
-    alert("Mostrando recuerdo especial " + memoryId);
-  }
-  
   function goBack() {
     selectedIngredients = [];
     document.querySelectorAll('.ingredient').forEach(ing => {
@@ -1051,4 +1121,3 @@
 </script>
 </body>
 </html>
-
