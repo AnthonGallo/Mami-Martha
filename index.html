@@ -513,103 +513,6 @@
       transition: width 0.5s ease;
       border-radius: 4px;
     }
-
-    /* Estilos para el pastel final con el nombre Patricia */
-    .final-cake-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      background: radial-gradient(circle, #ff6b6b, #4ecdc4, #45b7d1);
-      color: white;
-      padding: 20px;
-    }
-
-    .cake-with-name {
-      position: relative;
-      margin: 30px 0;
-    }
-
-    .cake-base {
-      font-size: 8rem;
-      position: relative;
-      z-index: 1;
-      animation: cakeBounce 2s infinite;
-    }
-
-    .cake-name {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #ff4081;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      font-family: 'Dancing Script', cursive;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 10px 20px;
-      border-radius: 10px;
-      animation: nameGlow 2s infinite alternate;
-    }
-
-    @keyframes nameGlow {
-      0% { box-shadow: 0 0 10px rgba(255, 64, 129, 0.5); }
-      100% { box-shadow: 0 0 20px rgba(255, 64, 129, 0.8); }
-    }
-
-    .cake-decoration {
-      font-size: 2rem;
-      margin: 10px 0;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .cake-message-final {
-      font-size: 1.8rem;
-      margin: 20px 0;
-      color: #ffd700;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    
-    /* Estilos para fuegos artificiales */
-    .fireworks-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1000;
-    }
-    
-    .firework {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    
-    .explosion {
-      position: absolute;
-      pointer-events: none;
-    }
-    
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      pointer-events: none;
-    }
     
     /* Responsive Design Improvements */
     @media (max-width: 1200px) {
@@ -689,14 +592,6 @@
       .photo-gallery {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .cake-base {
-        font-size: 6rem;
-      }
-
-      .cake-name {
-        font-size: 2rem;
-      }
     }
     
     @media (max-width: 576px) {
@@ -759,19 +654,6 @@
         max-width: 200px;
         margin: 0 auto;
       }
-
-      .cake-base {
-        font-size: 5rem;
-      }
-
-      .cake-name {
-        font-size: 1.8rem;
-        padding: 8px 16px;
-      }
-
-      .cake-message-final {
-        font-size: 1.5rem;
-      }
     }
     
     @media (max-width: 400px) {
@@ -803,26 +685,12 @@
         padding: 10px 25px;
         font-size: 1.2rem;
       }
-
-      .cake-base {
-        font-size: 4rem;
-      }
-
-      .cake-name {
-        font-size: 1.5rem;
-        padding: 5px 10px;
-      }
-
-      .cake-message-final {
-        font-size: 1.3rem;
-      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="sparkles"></div>
-<div id="fireworksContainer" class="fireworks-container"></div>
 
 <!-- CONSTRUCTOR DEL PASTEL -->
 <div id="cakeBuilder" class="cake-builder" style="display: none;">
@@ -956,7 +824,7 @@
         
         <div class="wish-card">
           <strong>💖 Mi Gratitud Infinita:</strong><br>
-          Y sobre todo, quería darte las gracias. Gracias por tus consejos, por tu apoyo y por ser esa figura tan especial en my vida. Eres como una mamá para mí y te aprecio más de lo que las palabras pueden expresar.
+          Y sobre todo, quería darte las gracias. Gracias por tus consejos, por tu apoyo y por ser esa figura tan especial en mi vida. Eres como una mamá para mí y te aprecio más de lo que las palabras pueden expresar.
         </div>
       </div>
       
@@ -979,27 +847,6 @@
       🔄 Volver a Crear Magia
     </button>
   </div>
-</div>
-
-<!-- PANTALLA 3: PASTEL FINAL CON NOMBRE -->
-<div id="finalCakeScreen" class="final-cake-container" style="display: none;">
-  <h1 class="magic-title">🎂 ¡Pastel Mágico Completo! ✨</h1>
-  
-  <div class="cake-with-name">
-    <div class="cake-base">🎂</div>
-    <div class="cake-name">Patricia</div>
-  </div>
-  
-  <div class="cake-decoration">✨ 🕯️ 🎀 ✨</div>
-  
-  <p class="cake-message-final">
-    ¡Feliz Cumpleaños Mamá Patricia!<br>
-    Con todo nuestro amor ❤️
-  </p>
-  
-  <button class="restart-btn" onclick="goBackToStart()">
-    🔄 Crear Otro Pastel
-  </button>
 </div>
 
 <script>
@@ -1221,141 +1068,6 @@
     window.scrollTo(0, 0);
   }
   
-  // Función para crear fuegos artificiales
-  function createFireworks() {
-    const fireworksContainer = document.getElementById('fireworksContainer');
-    fireworksContainer.innerHTML = '';
-    
-    // Crear múltiples fuegos artificiales
-    for (let i = 0; i < 15; i++) {
-      setTimeout(() => {
-        createFirework();
-      }, i * 300);
-    }
-    
-    // Efecto de sonido (simulado con vibración si está disponible)
-    if (navigator.vibrate) {
-      navigator.vibrate([100, 50, 100, 50, 100]);
-    }
-  }
-  
-  function createFirework() {
-    const fireworksContainer = document.getElementById('fireworksContainer');
-    const firework = document.createElement('div');
-    firework.classList.add('firework');
-    
-    // Posición aleatoria
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight / 2;
-    
-    firework.style.left = x + 'px';
-    firework.style.top = y + 'px';
-    
-    // Color aleatorio
-    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    firework.style.backgroundColor = color;
-    
-    fireworksContainer.appendChild(firework);
-    
-    // Animación de explosión
-    setTimeout(() => {
-      // Remover el fuego artificial
-      firework.remove();
-      
-      // Crear explosión
-      createExplosion(x, y, color);
-    }, 800);
-  }
-  
-  function createExplosion(x, y, color) {
-    const fireworksContainer = document.getElementById('fireworksContainer');
-    const explosion = document.createElement('div');
-    explosion.classList.add('explosion');
-    explosion.style.left = x + 'px';
-    explosion.style.top = y + 'px';
-    
-    fireworksContainer.appendChild(explosion);
-    
-    // Crear partículas de explosión
-    const particleCount = 30;
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.backgroundColor = color;
-      
-      // Ángulo y velocidad aleatorios
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 1 + Math.random() * 3;
-      const size = 3 + Math.random() * 4;
-      
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
-      
-      explosion.appendChild(particle);
-      
-      // Animación de partícula
-      const duration = 1000 + Math.random() * 500;
-      
-      particle.animate([
-        { transform: 'translate(0, 0)', opacity: 1 },
-        { 
-          transform: `translate(${Math.cos(angle) * speed * 100}px, ${Math.sin(angle) * speed * 100}px)`, 
-          opacity: 0 
-        }
-      ], {
-        duration: duration,
-        easing: 'cubic-bezier(0.1, 0.3, 0.2, 1)'
-      });
-      
-      // Remover partícula después de la animación
-      setTimeout(() => {
-        particle.remove();
-      }, duration);
-    }
-    
-    // Remover explosión después de un tiempo
-    setTimeout(() => {
-      explosion.remove();
-    }, 1500);
-  }
-  
-  // Nueva función para mostrar el pastel final con el nombre Patricia
-  function showFinalCake() {
-    // Ocultar la pantalla de experiencia
-    document.getElementById('experienceScreen').classList.remove('active');
-    
-    // Mostrar la pantalla del pastel final
-    document.getElementById('finalCakeScreen').style.display = 'flex';
-    
-    // Crear efectos especiales
-    createFinalCakeSparkles();
-    
-    // Lanzar fuegos artificiales
-    createFireworks();
-    
-    // Efectos de sonido (simulados)
-    if (navigator.vibrate) {
-      navigator.vibrate([200, 100, 200]);
-    }
-  }
-  
-  function createFinalCakeSparkles() {
-    const sparklesContainer = document.querySelector('.sparkles');
-    for(let i = 0; i < 30; i++) {
-      setTimeout(() => {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        sparkle.textContent = '✨';
-        sparkle.style.left = Math.random() * 100 + 'vw';
-        sparkle.style.top = Math.random() * 100 + 'vh';
-        sparkle.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        sparklesContainer.appendChild(sparkle);
-        setTimeout(() => { sparkle.remove(); }, 2500);
-      }, i * 150);
-    }
-  }
-  
   function showPhotoInBox(photoId, boxElement) {
     const contentDiv = boxElement.querySelector('.box-content');
     const iconDiv = boxElement.querySelector('.box-icon');
@@ -1405,27 +1117,6 @@
     document.getElementById('ingredientsScreen').classList.add('active');
     window.scrollTo(0, 0);
   }
-  
-  function goBackToStart() {
-    // Ocultar pantalla del pastel final
-    document.getElementById('finalCakeScreen').style.display = 'none';
-    
-    // Detener fuegos artificiales
-    document.getElementById('fireworksContainer').innerHTML = '';
-    
-    // Volver al inicio
-    goBack();
-  }
-  
-  // Modificar el botón "Ver la sorpresa" para que muestre el pastel final
-  document.addEventListener('DOMContentLoaded', function() {
-    // Reemplazar la función del botón "Ver la sorpresa"
-    const continueBtn = document.querySelector('.continue-btn');
-    if (continueBtn) {
-      continueBtn.setAttribute('onclick', 'showFinalCake()');
-      continueBtn.textContent = '✨ ¡Ver el Pastel Mágico! ✨';
-    }
-  });
 </script>
 </body>
 </html>
