@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎂 Sorpresa Especial para Mamá Patricia 🎂</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef, #fecfef);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .sparkle {
+      position: absolute;
+      color: #ffd700;
+      font-size: 16px;
+      animation: twinkle 2s ease-in-out infinite;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1) rotate(180deg); }
+    }
+    
+    .screen {
+      display: none;
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .active {
+      display: block;
+    }
+    
+    /* PANTALLA DE INGREDIENTES MÁGICOS */
+    .ingredients-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: radial-gradient(circle, #ff6b6b, #4ecdc4, #45b7d1);
+      color: white;
+    }
+    
+    .magic-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-8px); }
+    }
+    
+    .ingredients-instruction {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+    }
+    
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    
+    .ingredient {
+      background: rgba(255, 255, 255, 0.2);
+      border: 3px solid transparent;
+      border-radius: 20px;
+      padding: 20px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+    
+    .ingredient:hover {
+      transform: translateY(-10px) scale(1.05);
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .ingredient.selected {
+      border-color: #ffd700;
+      background: rgba(255, 215, 0, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+    }
+    
+    .ingredient-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .ingredient-name {
+      font-size: 1rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    .magic-button {
+      background: linear-gradient(145deg, #ffd700, #ffed4e);
+      color: #8b4513;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+      margin-top: 20px;
+    }
+    
+    .magic-button:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.6);
+    }
+    
+    .magic-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    /* PANTALLA DE EXPERIENCIA INTERACTIVA */
+    .experience-screen {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    
+    .experience-container {
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .celebration-title {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      animation: rainbow 3s ease-in-out infinite;
+    }
+    
+    @keyframes rainbow {
+      0% { color: #ff6b6b; }
+      16% { color: #ffa500; }
+      32% { color: #ffd700; }
+      48% { color: #32cd32; }
+      64% { color: #00bfff; }
+      80% { color: #8a2be2; }
+      100% { color: #ff6b6b; }
+    }
+    
+    .interactive-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      padding: 30px;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .memory-card {
+      background: linear-gradient(145deg, #ff6b6b, #ff8e8e);
+      color: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin: 15px 0;
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .memory-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(255, 107, 107, 0.5);
+    }
+    
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .photo-placeholder {
+      aspect-ratio: 1;
+      background: linear-gradient(145deg, #4ecdc4, #44a08d);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(78, 205, 196, 0.3);
+    }
+    
+    .photo-placeholder:hover {
+      transform: rotateY(10deg) translateY(-10px);
+      box-shadow: 0 15px 35px rgba(78, 205, 196, 0.5);
+    }
+    
+    .wishes-section {
+      background: linear-gradient(145deg, #ff9a9e, #fad0c4);
+    }
+    
+    .wish-card {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 10px 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid #ff6b6b;
+    }
+    
+    .final-message {
+      background: linear-gradient(145deg, #667eea, #764ba2);
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-top: 30px;
+    }
+    
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin-top: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .restart-btn {
+      background: linear-gradient(145deg, #ff6b6b, #ff5722);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 40px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+    }
+    
+    .restart-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.6);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .magic-title {
+        font-size: 2rem;
+      }
+      
+      .celebration-title {
+        font-size: 2.2rem;
+      }
+      
+      .ingredients-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 15px;
+      }
+      
+      .ingredient {
+        padding: 15px 8px;
+      }
+      
+      .ingredient-icon {
+        font-size: 2.5rem;
+      }
+      
+      .section {
+        padding: 20px;
+      }
+      
+      .photo-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+      }
+      
+      .experience-screen {
+        padding: 20px 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .magic-title {
+        font-size: 1.8rem;
+      }
+      
+      .celebration-title {
+        font-size: 1.8rem;
+      }
+      
+      .ingredients-instruction {
+        font-size: 1.1rem;
+      }
+      
+      .ingredients-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .wish-card {
+        font-size: 1rem;
+        padding: 15px;
+      }
+      
+      .signature {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="sparkles"></div>
+
+<!-- PANTALLA 1: INGREDIENTES MÁGICOS -->
+<div id="ingredientsScreen" class="screen ingredients-screen active">
+  <h1 class="magic-title">🧙‍♀️ ¡INGREDIENTES MÁGICOS! ✨</h1>
+  <p class="ingredients-instruction">
+    Para preparar la sorpresa perfecta para Mamá Patricia, necesitas seleccionar los 4 ingredientes mágicos correctos. 
+    ¡Elige sabiamente! 🎯
+  </p>
+  
+  <div class="ingredients-grid">
+    <div class="ingredient" data-ingredient="amor" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">❤️</span>
+      <span class="ingredient-name">Amor</span>
+    </div>
+    <div class="ingredient" data-ingredient="dulzura" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">🍯</span>
+      <span class="ingredient-name">Dulzura</span>
+    </div>
+    <div class="ingredient" data-ingredient="alegria" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">😊</span>
+      <span class="ingredient-name">Alegría</span>
+    </div>
+    <div class="ingredient" data-ingredient="fuerza" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">💪</span>
+      <span class="ingredient-name">Fuerza</span>
+    </div>
+    <div class="ingredient" data-ingredient="gratitud" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">🙏</span>
+      <span class="ingredient-name">Gratitud</span>
+    </div>
+    <div class="ingredient" data-ingredient="sabiduria" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">🦉</span>
+      <span class="ingredient-name">Sabiduría</span>
+    </div>
+    <div class="ingredient" data-ingredient="magia" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">✨</span>
+      <span class="ingredient-name">Magia</span>
+    </div>
+    <div class="ingredient" data-ingredient="bendiciones" onclick="selectIngredient(this)">
+      <span class="ingredient-icon">🌟</span>
+      <span class="ingredient-name">Bendiciones</span>
+    </div>
+  </div>
+  
+  <button id="magicButton" class="magic-button" onclick="createMagic()" disabled>
+    🎭 ¡CREAR LA MAGIA! 🎭
+  </button>
+  
+  <p style="margin-top: 15px; font-size: 1rem; opacity: 0.8;">
+    <span id="selectedCount">0</span>/4 ingredientes seleccionados
+  </p>
+</div>
+
+<!-- PANTALLA 2: EXPERIENCIA INTERACTIVA -->
+<div id="experienceScreen" class="screen experience-screen">
+  <div class="experience-container">
+    <h1 class="celebration-title">🎉 ¡FELIZ CUMPLEAÑOS MAMÁ PATRICIA! 🎂</h1>
+    
+    <div class="interactive-sections">
+      <!-- Sección de Recuerdos Especiales -->
+      <div class="section">
+        <h2 class="section-title">📸 Recuerdos Especiales</h2>
+        <div class="memory-card" onclick="showMemory(1)">
+          <h3>💝 Tu Fortaleza Increíble</h3>
+          <p>Solo pasaba a recordarte en tu día lo increíblemente fuerte que eres. La vida tiene sus momentos, pero tú tienes el temple para reinar el mundo. Nunca lo olvides.</p>
+        </div>
+        
+        <div class="photo-gallery">
+          <div class="photo-placeholder" onclick="showPhotoMessage(1)">📸</div>
+          <div class="photo-placeholder" onclick="showPhotoMessage(2)">🌺</div>
+          <div class="photo-placeholder" onclick="showPhotoMessage(3)">🎂</div>
+          <div class="photo-placeholder" onclick="showPhotoMessage(4)">💐</div>
+        </div>
+      </div>
+      
+      <!-- Sección de Buenos Deseos -->
+      <div class="section wishes-section">
+        <h2 class="section-title">🌈 Buenos Deseos para Ti</h2>
+        <div class="wish-card">
+          <strong>🙏 Para tu nuevo año:</strong><br>
+          Espero que hoy estés rodeada de mucho amor y alegría. Te deseo un año lleno de salud, estabilidad y bendiciones. Que Dios te cuide siempre.
+        </div>
+        
+        <div class="wish-card">
+          <strong>💖 Mi Gratitud Infinita:</strong><br>
+          Y sobre todo, quería darte las gracias. Gracias por tus consejos, por tu apoyo y por ser esa figura tan especial en mi vida. Eres como una mamá para mí y te aprecio más de lo que las palabras pueden expresar.
+        </div>
+      </div>
+      
+      <!-- Mensaje Final -->
+      <div class="section final-message">
+        <h2 class="section-title">💌 Mensaje del Corazón</h2>
+        <p>
+          ¡Feliz cumpleaños!<br><br>
+          Te quiero, disfruta mucho tu día mami Martha. 🥳
+        </p>
+        
+        <div class="signature">
+          Con todo mi amor,<br>
+          Tu hijo del corazón ❤️
+        </div>
+      </div>
+    </div>
+    
+    <button class="restart-btn" onclick="goBack()">
+      🔄 Volver a Crear Magia
+    </button>
+  </div>
+</div>
+
+<script>
+  // Crear efecto de brillos
+  function crearBrillos() {
+    const sparklesContainer = document.querySelector('.sparkles');
+    setInterval(() => {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.textContent = '✨';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      sparklesContainer.appendChild(sparkle);
+      setTimeout(() => { sparkle.remove(); }, 2000);
+    }, 800);
+  }
+  
+  crearBrillos();
+  
+  // Sistema de ingredientes mágicos
+  let selectedIngredients = [];
+  const correctIngredients = ['amor', 'fuerza', 'gratitud', 'bendiciones']; // Los ingredientes correctos
+  
+  function selectIngredient(element) {
+    const ingredient = element.dataset.ingredient;
+    
+    if (element.classList.contains('selected')) {
+      // Deseleccionar
+      element.classList.remove('selected');
+      selectedIngredients = selectedIngredients.filter(i => i !== ingredient);
+    } else if (selectedIngredients.length < 4) {
+      // Seleccionar
+      element.classList.add('selected');
+      selectedIngredients.push(ingredient);
+    }
+    
+    updateUI();
+  }
+  
+  function updateUI() {
+    const countElement = document.getElementById('selectedCount');
+    const magicButton = document.getElementById('magicButton');
+    
+    countElement.textContent = selectedIngredients.length;
+    
+    if (selectedIngredients.length === 4) {
+      magicButton.disabled = false;
+      magicButton.style.animation = 'bounce 1s ease-in-out infinite';
+    } else {
+      magicButton.disabled = true;
+      magicButton.style.animation = 'none';
+    }
+  }
+  
+  function createMagic() {
+    // Verificar si tiene los ingredientes correctos (pero permitir cualquier combinación de 4)
+    const hasCorrectIngredients = correctIngredients.every(ingredient => 
+      selectedIngredients.includes(ingredient)
+    );
+    
+    if (hasCorrectIngredients) {
+      showSpecialEffect();
+    }
+    
+    // Cambiar a la pantalla de experiencia después de un breve delay
+    setTimeout(() => {
+      document.getElementById('ingredientsScreen').classList.remove('active');
+      document.getElementById('experienceScreen').classList.add('active');
+      window.scrollTo(0, 0);
+    }, hasCorrectIngredients ? 2000 : 500);
+  }
+  
+  function showSpecialEffect() {
+    // Crear explosión de brillos
+    const sparklesContainer = document.querySelector('.sparkles');
+    for(let i = 0; i < 30; i++) {
+      setTimeout(() => {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.textContent = '🌟';
+        sparkle.style.left = Math.random() * 100 + 'vw';
+        sparkle.style.top = Math.random() * 100 + 'vh';
+        sparkle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        sparklesContainer.appendChild(sparkle);
+        setTimeout(() => { sparkle.remove(); }, 2000);
+      }, i * 50);
+    }
+    
+    // Mostrar mensaje especial
+    alert('🎉 ¡PERFECTO! Has seleccionado los ingredientes ideales para Mamá Patricia. ¡Preparando algo muy especial! ✨');
+  }
+  
+  function showMemory(memoryId) {
+    const messages = [
+      "💝 Este recuerdo representa toda la fortaleza que has demostrado a lo largo de los años. ¡Eres increíble!",
+      "🌟 Cada momento difícil que has superado te ha hecho más fuerte y sabia.",
+      "❤️ Tu ejemplo de perseverancia inspira a todos los que te conocemos."
+    ];
+    
+    alert(messages[memoryId - 1] || messages[0]);
+  }
+  
+  function showPhotoMessage(photoId) {
+    const photoMessages = [
+      "📸 Aquí estarían todas esas fotos donde se ve tu hermosa sonrisa",
+      "🌺 Esta representa todos los momentos floridos que has vivido",
+      "🎂 Por todos los cumpleaños que hemos celebrado juntos",
+      "💐 Por todas las flores que mereces recibir cada día"
+    ];
+    
+    alert(photoMessages[photoId - 1] || "💫 Un recuerdo especial guardado en el corazón");
+  }
+  
+  function goBack() {
+    selectedIngredients = [];
+    document.querySelectorAll('.ingredient').forEach(ing => {
+      ing.classList.remove('selected');
+    });
+    updateUI();
+    
+    document.getElementById('experienceScreen').classList.remove('active');
+    document.getElementById('ingredientsScreen').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
