@@ -232,11 +232,12 @@
       margin: 20px 0;
     }
     
-    .photo-frame {
+    .memory-box {
       aspect-ratio: 1;
       background: linear-gradient(145deg, #4ecdc4, #44a08d);
       border-radius: 15px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -244,11 +245,23 @@
       box-shadow: 0 6px 20px rgba(78, 205, 196, 0.3);
       overflow: hidden;
       border: 3px solid #fff;
+      padding: 10px;
     }
     
-    .photo-frame:hover {
+    .memory-box:hover {
       transform: rotateY(10deg) translateY(-10px);
       box-shadow: 0 15px 35px rgba(78, 205, 196, 0.5);
+    }
+    
+    .box-icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    
+    .box-label {
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: bold;
     }
     
     .memory-photo {
@@ -431,53 +444,13 @@
       50% { transform: translateY(-15px); }
     }
     
-      .step-text {
-        color: #fff;
-        font-size: 1.3rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        font-weight: bold;
-      }
-      
-      .live-cake-title {
-        font-size: 1.8rem;
-        margin-bottom: 25px;
-      }
-      
-      .step-cake {
-        font-size: 3rem;
-        margin-bottom: 12px;
-      }
-      
-    .continue-btn:hover {
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.6);
+    .step-text {
+      color: #fff;
+      font-size: 1.3rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      font-weight: bold;
     }
-    @media (max-width: 768px) {
-      .magic-title {
-        font-size: 2rem;
-      }
-      
-      .celebration-title {
-        font-size: 2.2rem;
-      }
-      
-      .ingredients-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 15px;
-      }
-      
-      .ingredient {
-        padding: 15px 8px;
-      }
-      
-      .ingredient-icon {
-        font-size: 2.5rem;
-      }
-      
-      .section {
-        padding: 20px;
-      }
-      
+    
     .cake-builder {
       position: fixed;
       bottom: 20px;
@@ -540,6 +513,32 @@
       transition: width 0.5s ease;
       border-radius: 4px;
     }
+    
+    @media (max-width: 768px) {
+      .magic-title {
+        font-size: 2rem;
+      }
+      
+      .celebration-title {
+        font-size: 2.2rem;
+      }
+      
+      .ingredients-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 15px;
+      }
+      
+      .ingredient {
+        padding: 15px 8px;
+      }
+      
+      .ingredient-icon {
+        font-size: 2.5rem;
+      }
+      
+      .section {
+        padding: 20px;
+      }
       
       .experience-screen {
         padding: 20px 15px;
@@ -555,6 +554,13 @@
       
       .candles {
         font-size: 2rem;
+      }
+      
+      .cake-builder {
+        bottom: 10px;
+        right: 10px;
+        padding: 15px;
+        min-width: 170px;
       }
     }
     
@@ -595,6 +601,15 @@
       .cake-message {
         font-size: 1.5rem;
       }
+      
+      .cake-builder {
+        position: relative;
+        bottom: unset;
+        right: unset;
+        margin: 20px auto;
+        width: 100%;
+        max-width: 300px;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
@@ -621,35 +636,6 @@
   </div>
 </div>
 
-<!-- CONSTRUCTOR DEL PASTEL -->
-<div id="cakeBuilder" class="cake-builder" style="display: none;">
-  <h4>🍰 Construyendo tu pastel</h4>
-  <div class="cake-layers">
-    <div class="cake-layer" id="layer8">🕯️ Velas</div>
-    <div class="cake-layer" id="layer7">🌟 Bendiciones</div>
-    <div class="cake-layer" id="layer6">✨ Magia</div>
-    <div class="cake-layer" id="layer5">🦉 Sabiduría</div>
-    <div class="cake-layer" id="layer4">🙏 Gratitud</div>
-    <div class="cake-layer" id="layer3">💪 Fuerza</div>
-    <div class="cake-layer" id="layer2">😊 Alegría</div>
-    <div class="cake-layer" id="layer1">🍯 Dulzura</div>
-    <div class="cake-layer active" id="layer0">❤️ Base de Amor</div>
-  </div>
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
-</div>
-<div id="cakeAnimation" class="cake-animation">
-  <div class="cake-container">
-    <div class="cake">🎂</div>
-    <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
-    <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
-    <button class="continue-btn" onclick="showExperience()">
-      ✨ ¡Ver la Sorpresa! ✨
-    </button>
-  </div>
-</div>
-
 <!-- ANIMACIÓN DEL PASTEL -->
 <div id="cakeAnimation" class="cake-animation">
   <div class="cake-container">
@@ -661,6 +647,8 @@
     </button>
   </div>
 </div>
+
+<!-- PANTALLA 1: INGREDIENTES MÁGICOS -->
 <div id="ingredientsScreen" class="screen ingredients-screen active">
   <h1 class="magic-title">🧙‍♀️ ¡INGREDIENTES MÁGICOS! ✨</h1>
   <p class="ingredients-instruction">
@@ -731,21 +719,24 @@
             <div class="box-icon">👩</div>
             <div class="box-label">Foto de Mamá</div>
             <div class="box-content" style="display: none;">
-              <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOo3XSsg0LwL6WTZeDdVWD-WJFu1ll6N6nRee27sBvsbA7-XYOYALMwuQ=w476-h928-s-no-gm?authuser=2" alt="Foto de Mamá Patricia" class="memory-photo">
+              <!-- Reemplaza esta URL con el enlace directo a tu foto -->
+              <img src="https://via.placeholder.com/150" alt="Foto de Mamá Patricia" class="memory-photo">
             </div>
           </div>
           <div class="memory-box" onclick="showPhotoInBox(2, this)">
             <div class="box-icon">🎮</div>
             <div class="box-label">Recuerdos de Juego</div>
             <div class="box-content" style="display: none;">
-              <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOMMvr2d0H99wV5YELgL9Kq3s32_v-8CRkC0pzYYvlH916nI18EMmNovQ=w928-h928-s-no-gm?authuser=2" alt="Recuerdos de juego" class="memory-photo">
+              <!-- Reemplaza esta URL con el enlace directo a tu foto -->
+              <img src="https://via.placeholder.com/150" alt="Recuerdos de juego" class="memory-photo">
             </div>
           </div>
           <div class="memory-box" onclick="showPhotoInBox(3, this)">
             <div class="box-icon">🌸</div>
             <div class="box-label">Especial</div>
             <div class="box-content" style="display: none;">
-              <img src="https://i.pinimg.com/originals/cf/ea/5c/cfea5c3e7c914b2bd3d392a3df0bac00.jpg" alt="Flores hermosas" class="memory-photo">
+              <!-- Reemplaza esta URL con el enlace directo a tu foto -->
+              <img src="https://via.placeholder.com/150" alt="Flores hermosas" class="memory-photo">
             </div>
           </div>
         </div>
@@ -1030,6 +1021,11 @@
       boxElement.style.transform = 'scale(1)';
       boxElement.style.background = 'linear-gradient(145deg, #4ecdc4, #44a08d)';
     }
+  }
+  
+  function showMemory(memoryId) {
+    // Aquí puedes implementar la lógica para mostrar recuerdos específicos
+    alert("Mostrando recuerdo especial " + memoryId);
   }
   
   function goBack() {
