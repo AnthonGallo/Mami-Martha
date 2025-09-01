@@ -43,17 +43,14 @@
     }
     
     .screen {
+      display: none;
       min-height: 100vh;
       padding: 20px;
       position: relative;
       z-index: 2;
-      opacity: 0;
-      display: none;
-      transition: opacity 0.8s ease-in-out;
     }
     
-    .screen.active {
-      opacity: 1;
+    .active {
       display: block;
     }
     
@@ -1066,32 +1063,10 @@
     // Ocultar animación del pastel
     document.getElementById('cakeAnimation').style.display = 'none';
     
-    // Mostrar pantalla de experiencia con transición
+    // Mostrar pantalla de experiencia
     document.getElementById('ingredientsScreen').classList.remove('active');
-    setTimeout(() => {
-      document.getElementById('experienceScreen').classList.add('active');
-      window.scrollTo(0, 0);
-      
-      // Agregar efecto especial de confeti al mostrar la experiencia
-      createWelcomeConfetti();
-    }, 300);
-  }
-  
-  function createWelcomeConfetti() {
-    const sparklesContainer = document.querySelector('.sparkles');
-    for(let i = 0; i < 30; i++) {
-      setTimeout(() => {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        const confettiTypes = ['🎉', '🎊', '✨', '🌟', '🎂', '🎁', '🎈'];
-        sparkle.textContent = confettiTypes[Math.floor(Math.random() * confettiTypes.length)];
-        sparkle.style.left = Math.random() * 100 + 'vw';
-        sparkle.style.top = Math.random() * 30 + 'vh';
-        sparkle.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        sparklesContainer.appendChild(sparkle);
-        setTimeout(() => { sparkle.remove(); }, 2000);
-      }, i * 100);
-    }
+    document.getElementById('experienceScreen').classList.add('active');
+    window.scrollTo(0, 0);
   }
   
   function showPhotoInBox(photoId, boxElement) {
@@ -1139,12 +1114,9 @@
     
     updateUI();
     
-    // Transición entre pantallas
     document.getElementById('experienceScreen').classList.remove('active');
-    setTimeout(() => {
-      document.getElementById('ingredientsScreen').classList.add('active');
-      window.scrollTo(0, 0);
-    }, 300);
+    document.getElementById('ingredientsScreen').classList.add('active');
+    window.scrollTo(0, 0);
   }
 </script>
 </body>
