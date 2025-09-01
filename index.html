@@ -232,22 +232,35 @@
       margin: 20px 0;
     }
     
-    .photo-placeholder {
+    .photo-frame {
       aspect-ratio: 1;
       background: linear-gradient(145deg, #4ecdc4, #44a08d);
       border-radius: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 6px 20px rgba(78, 205, 196, 0.3);
+      overflow: hidden;
+      border: 3px solid #fff;
     }
     
-    .photo-placeholder:hover {
+    .photo-frame:hover {
       transform: rotateY(10deg) translateY(-10px);
       box-shadow: 0 15px 35px rgba(78, 205, 196, 0.5);
+    }
+    
+    .memory-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    
+    .photo-placeholder {
+      font-size: 3rem;
+      color: white;
     }
     
     .wishes-section {
@@ -300,7 +313,145 @@
       box-shadow: 0 15px 30px rgba(255, 107, 107, 0.6);
     }
     
-    /* Responsive */
+    .cake-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      flex-direction: column;
+    }
+    
+    .cake-container {
+      text-align: center;
+      animation: cakeGrow 2s ease-out;
+    }
+    
+    @keyframes cakeGrow {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .cake {
+      font-size: 8rem;
+      margin-bottom: 30px;
+      animation: cakeBounce 1s ease-in-out infinite alternate;
+    }
+    
+    @keyframes cakeBounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+    
+    .cake-message {
+      color: #ffd700;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      margin-bottom: 20px;
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700; }
+      100% { text-shadow: 0 0 30px #ffd700, 0 0 40px #ffd700, 0 0 50px #ffd700; }
+    }
+    
+    .candles {
+      font-size: 3rem;
+      margin: 20px 0;
+      animation: candleFlicker 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes candleFlicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .continue-btn {
+      background: linear-gradient(145deg, #ff6b6b, #ff5722);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+      animation: buttonPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes buttonPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .live-cake-title {
+      color: #ffd700;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      margin-bottom: 30px;
+      animation: titlePulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes titlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .cake-build-step {
+      margin: 20px 0;
+      text-align: center;
+      animation: stepAppear 0.8s ease-out;
+    }
+    
+    @keyframes stepAppear {
+      0% { transform: translateY(30px) scale(0.5); opacity: 0; }
+      50% { transform: translateY(-5px) scale(1.1); opacity: 0.8; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    
+    .step-cake {
+      font-size: 4rem;
+      margin-bottom: 15px;
+      animation: stepBounce 0.6s ease-in-out;
+    }
+    
+    @keyframes stepBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+      .step-text {
+        color: #fff;
+        font-size: 1.3rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        font-weight: bold;
+      }
+      
+      .live-cake-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+      }
+      
+      .step-cake {
+        font-size: 3rem;
+        margin-bottom: 12px;
+      }
+      
+    .continue-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.6);
+    }
     @media (max-width: 768px) {
       .magic-title {
         font-size: 2rem;
@@ -327,13 +478,83 @@
         padding: 20px;
       }
       
-      .photo-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 10px;
-      }
+    .cake-builder {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid #ffd700;
+      text-align: center;
+      min-width: 200px;
+      z-index: 100;
+    }
+    
+    .cake-builder h4 {
+      color: #8b4513;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .cake-layers {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 5px;
+      margin: 15px 0;
+    }
+    
+    .cake-layer {
+      opacity: 0.3;
+      transition: all 0.5s ease;
+      font-size: 1.5rem;
+    }
+    
+    .cake-layer.active {
+      opacity: 1;
+      animation: layerAppear 0.8s ease-out;
+    }
+    
+    @keyframes layerAppear {
+      0% { transform: translateY(20px) scale(0.8); opacity: 0; }
+      50% { transform: translateY(-5px) scale(1.1); opacity: 0.8; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ff6b6b, #ffd700, #4ecdc4);
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 4px;
+    }
       
       .experience-screen {
         padding: 20px 15px;
+      }
+      
+      .cake {
+        font-size: 5rem;
+      }
+      
+      .cake-message {
+        font-size: 1.8rem;
+      }
+      
+      .candles {
+        font-size: 2rem;
       }
     }
     
@@ -366,6 +587,14 @@
       .signature {
         font-size: 1.5rem;
       }
+      
+      .cake {
+        font-size: 4rem;
+      }
+      
+      .cake-message {
+        font-size: 1.5rem;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
@@ -373,12 +602,70 @@
 <body>
 <div class="sparkles"></div>
 
-<!-- PANTALLA 1: INGREDIENTES MÁGICOS -->
+<!-- CONSTRUCTOR DEL PASTEL -->
+<div id="cakeBuilder" class="cake-builder" style="display: none;">
+  <h4>🍰 Construyendo tu pastel</h4>
+  <div class="cake-layers">
+    <div class="cake-layer" id="layer8">🕯️ Velas</div>
+    <div class="cake-layer" id="layer7">🌟 Bendiciones</div>
+    <div class="cake-layer" id="layer6">✨ Magia</div>
+    <div class="cake-layer" id="layer5">🦉 Sabiduría</div>
+    <div class="cake-layer" id="layer4">🙏 Gratitud</div>
+    <div class="cake-layer" id="layer3">💪 Fuerza</div>
+    <div class="cake-layer" id="layer2">😊 Alegría</div>
+    <div class="cake-layer" id="layer1">🍯 Dulzura</div>
+    <div class="cake-layer active" id="layer0">❤️ Base de Amor</div>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<!-- CONSTRUCTOR DEL PASTEL -->
+<div id="cakeBuilder" class="cake-builder" style="display: none;">
+  <h4>🍰 Construyendo tu pastel</h4>
+  <div class="cake-layers">
+    <div class="cake-layer" id="layer8">🕯️ Velas</div>
+    <div class="cake-layer" id="layer7">🌟 Bendiciones</div>
+    <div class="cake-layer" id="layer6">✨ Magia</div>
+    <div class="cake-layer" id="layer5">🦉 Sabiduría</div>
+    <div class="cake-layer" id="layer4">🙏 Gratitud</div>
+    <div class="cake-layer" id="layer3">💪 Fuerza</div>
+    <div class="cake-layer" id="layer2">😊 Alegría</div>
+    <div class="cake-layer" id="layer1">🍯 Dulzura</div>
+    <div class="cake-layer active" id="layer0">❤️ Base de Amor</div>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+<div id="cakeAnimation" class="cake-animation">
+  <div class="cake-container">
+    <div class="cake">🎂</div>
+    <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
+    <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
+    <button class="continue-btn" onclick="showExperience()">
+      ✨ ¡Ver la Sorpresa! ✨
+    </button>
+  </div>
+</div>
+
+<!-- ANIMACIÓN DEL PASTEL -->
+<div id="cakeAnimation" class="cake-animation">
+  <div class="cake-container">
+    <div class="cake">🎂</div>
+    <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
+    <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
+    <button class="continue-btn" onclick="showExperience()">
+      ✨ ¡Ver la Sorpresa! ✨
+    </button>
+  </div>
+</div>
 <div id="ingredientsScreen" class="screen ingredients-screen active">
   <h1 class="magic-title">🧙‍♀️ ¡INGREDIENTES MÁGICOS! ✨</h1>
   <p class="ingredients-instruction">
-    Para preparar la sorpresa perfecta para Mamá Patricia, necesitas seleccionar los 4 ingredientes mágicos correctos. 
-    ¡Elige sabiamente! 🎯
+    Para preparar el pastel perfecto para Mamá Patricia, necesitas recolectar TODOS los ingredientes mágicos. 
+    ¡No olvides ninguno! 🎯
   </p>
   
   <div class="ingredients-grid">
@@ -417,11 +704,11 @@
   </div>
   
   <button id="magicButton" class="magic-button" onclick="createMagic()" disabled>
-    🎭 ¡CREAR LA MAGIA! 🎭
+    🎂 ¡HORNEAR EL PASTEL! 🎂
   </button>
   
   <p style="margin-top: 15px; font-size: 1rem; opacity: 0.8;">
-    <span id="selectedCount">0</span>/4 ingredientes seleccionados
+    <span id="selectedCount">0</span>/8 ingredientes recolectados
   </p>
 </div>
 
@@ -440,10 +727,27 @@
         </div>
         
         <div class="photo-gallery">
-          <div class="photo-placeholder" onclick="showPhotoMessage(1)">📸</div>
-          <div class="photo-placeholder" onclick="showPhotoMessage(2)">🌺</div>
-          <div class="photo-placeholder" onclick="showPhotoMessage(3)">🎂</div>
-          <div class="photo-placeholder" onclick="showPhotoMessage(4)">💐</div>
+          <div class="memory-box" onclick="showPhotoInBox(1, this)">
+            <div class="box-icon">👩</div>
+            <div class="box-label">Foto de Mamá</div>
+            <div class="box-content" style="display: none;">
+              <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOo3XSsg0LwL6WTZeDdVWD-WJFu1ll6N6nRee27sBvsbA7-XYOYALMwuQ=w476-h928-s-no-gm?authuser=2" alt="Foto de Mamá Patricia" class="memory-photo">
+            </div>
+          </div>
+          <div class="memory-box" onclick="showPhotoInBox(2, this)">
+            <div class="box-icon">🎮</div>
+            <div class="box-label">Recuerdos de Juego</div>
+            <div class="box-content" style="display: none;">
+              <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOMMvr2d0H99wV5YELgL9Kq3s32_v-8CRkC0pzYYvlH916nI18EMmNovQ=w928-h928-s-no-gm?authuser=2" alt="Recuerdos de juego" class="memory-photo">
+            </div>
+          </div>
+          <div class="memory-box" onclick="showPhotoInBox(3, this)">
+            <div class="box-icon">🌸</div>
+            <div class="box-label">Especial</div>
+            <div class="box-content" style="display: none;">
+              <img src="https://i.pinimg.com/originals/cf/ea/5c/cfea5c3e7c914b2bd3d392a3df0bac00.jpg" alt="Flores hermosas" class="memory-photo">
+            </div>
+          </div>
         </div>
       </div>
       
@@ -470,8 +774,8 @@
         </p>
         
         <div class="signature">
-          Con todo mi amor,<br>
-          Tu hijo del corazón ❤️
+          Con todo mi cariño,<br>
+          Tu hijito Anthon ❤️
         </div>
       </div>
     </div>
@@ -502,7 +806,8 @@
   
   // Sistema de ingredientes mágicos
   let selectedIngredients = [];
-  const correctIngredients = ['amor', 'fuerza', 'gratitud', 'bendiciones']; // Los ingredientes correctos
+  const totalIngredients = 8;
+  const ingredientLayers = ['amor', 'dulzura', 'alegria', 'fuerza', 'gratitud', 'sabiduria', 'magia', 'bendiciones'];
   
   function selectIngredient(element) {
     const ingredient = element.dataset.ingredient;
@@ -511,13 +816,55 @@
       // Deseleccionar
       element.classList.remove('selected');
       selectedIngredients = selectedIngredients.filter(i => i !== ingredient);
-    } else if (selectedIngredients.length < 4) {
+      hideLayerInCake(ingredient);
+    } else {
       // Seleccionar
       element.classList.add('selected');
       selectedIngredients.push(ingredient);
+      showLayerInCake(ingredient);
     }
     
     updateUI();
+  }
+  
+  function showLayerInCake(ingredient) {
+    const cakeBuilder = document.getElementById('cakeBuilder');
+    if (selectedIngredients.length === 1) {
+      cakeBuilder.style.display = 'block';
+    }
+    
+    const layerIndex = ingredientLayers.indexOf(ingredient);
+    if (layerIndex !== -1) {
+      const layer = document.getElementById(`layer${layerIndex + 1}`);
+      if (layer) {
+        layer.classList.add('active');
+      }
+    }
+    
+    // Actualizar barra de progreso
+    const progressFill = document.getElementById('progressFill');
+    const progress = (selectedIngredients.length / totalIngredients) * 100;
+    progressFill.style.width = progress + '%';
+  }
+  
+  function hideLayerInCake(ingredient) {
+    const layerIndex = ingredientLayers.indexOf(ingredient);
+    if (layerIndex !== -1) {
+      const layer = document.getElementById(`layer${layerIndex + 1}`);
+      if (layer) {
+        layer.classList.remove('active');
+      }
+    }
+    
+    // Actualizar barra de progreso
+    const progressFill = document.getElementById('progressFill');
+    const progress = (selectedIngredients.length / totalIngredients) * 100;
+    progressFill.style.width = progress + '%';
+    
+    // Ocultar constructor si no hay ingredientes
+    if (selectedIngredients.length === 0) {
+      document.getElementById('cakeBuilder').style.display = 'none';
+    }
   }
   
   function updateUI() {
@@ -526,7 +873,7 @@
     
     countElement.textContent = selectedIngredients.length;
     
-    if (selectedIngredients.length === 4) {
+    if (selectedIngredients.length === totalIngredients) {
       magicButton.disabled = false;
       magicButton.style.animation = 'bounce 1s ease-in-out infinite';
     } else {
@@ -536,62 +883,153 @@
   }
   
   function createMagic() {
-    // Verificar si tiene los ingredientes correctos (pero permitir cualquier combinación de 4)
-    const hasCorrectIngredients = correctIngredients.every(ingredient => 
-      selectedIngredients.includes(ingredient)
-    );
-    
-    if (hasCorrectIngredients) {
-      showSpecialEffect();
-    }
-    
-    // Cambiar a la pantalla de experiencia después de un breve delay
-    setTimeout(() => {
-      document.getElementById('ingredientsScreen').classList.remove('active');
-      document.getElementById('experienceScreen').classList.add('active');
-      window.scrollTo(0, 0);
-    }, hasCorrectIngredients ? 2000 : 500);
+    // Mostrar animación de construcción del pastel en vivo
+    showLiveCakeAnimation();
   }
   
-  function showSpecialEffect() {
-    // Crear explosión de brillos
+  function showLiveCakeAnimation() {
+    const cakeAnimation = document.getElementById('cakeAnimation');
+    const cakeContainer = cakeAnimation.querySelector('.cake-container');
+    
+    // Limpiar contenido anterior
+    cakeContainer.innerHTML = '<div class="live-cake-title">🎂 ¡Creando tu pastel mágico! ✨</div>';
+    
+    // Mostrar la pantalla de animación
+    cakeAnimation.style.display = 'flex';
+    
+    // Ocultar el constructor del lado
+    document.getElementById('cakeBuilder').style.display = 'none';
+    
+    // Construir el pastel paso a paso
+    buildCakeStep(0, cakeContainer);
+  }
+  
+  function buildCakeStep(step, container) {
+    const cakeSteps = [
+      { emoji: '🥧', text: 'Preparando la base con amor...', delay: 1000 },
+      { emoji: '🍰', text: 'Agregando dulzura...', delay: 1000 },
+      { emoji: '🎂', text: 'Mezclando alegría y fuerza...', delay: 1000 },
+      { emoji: '🧁', text: 'Espolvoreando gratitud...', delay: 1000 },
+      { emoji: '🍮', text: 'Añadiendo sabiduría...', delay: 1000 },
+      { emoji: '✨', text: 'Aplicando magia especial...', delay: 1000 },
+      { emoji: '🌟', text: 'Cubriendo con bendiciones...', delay: 1000 },
+      { emoji: '🕯️', text: 'Encendiendo las velas...', delay: 1500 }
+    ];
+    
+    if (step < cakeSteps.length) {
+      const currentStep = cakeSteps[step];
+      
+      // Crear elemento de paso
+      const stepDiv = document.createElement('div');
+      stepDiv.className = 'cake-build-step';
+      stepDiv.innerHTML = `
+        <div class="step-cake">${currentStep.emoji}</div>
+        <div class="step-text">${currentStep.text}</div>
+      `;
+      
+      container.appendChild(stepDiv);
+      
+      // Crear efecto de brillo
+      createBuildingSparkles();
+      
+      // Continuar con el siguiente paso
+      setTimeout(() => {
+        buildCakeStep(step + 1, container);
+      }, currentStep.delay);
+      
+    } else {
+      // Animación final del pastel completado
+      setTimeout(() => {
+        showCompletedCake(container);
+      }, 500);
+    }
+  }
+  
+  function createBuildingSparkles() {
     const sparklesContainer = document.querySelector('.sparkles');
-    for(let i = 0; i < 30; i++) {
+    for(let i = 0; i < 10; i++) {
       setTimeout(() => {
         const sparkle = document.createElement('div');
         sparkle.classList.add('sparkle');
-        sparkle.textContent = '🌟';
+        sparkle.textContent = '✨';
         sparkle.style.left = Math.random() * 100 + 'vw';
         sparkle.style.top = Math.random() * 100 + 'vh';
-        sparkle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        sparkle.style.fontSize = (Math.random() * 15 + 10) + 'px';
         sparklesContainer.appendChild(sparkle);
         setTimeout(() => { sparkle.remove(); }, 2000);
-      }, i * 50);
+      }, i * 100);
     }
-    
-    // Mostrar mensaje especial
-    alert('🎉 ¡PERFECTO! Has seleccionado los ingredientes ideales para Mamá Patricia. ¡Preparando algo muy especial! ✨');
   }
   
-  function showMemory(memoryId) {
-    const messages = [
-      "💝 Este recuerdo representa toda la fortaleza que has demostrado a lo largo de los años. ¡Eres increíble!",
-      "🌟 Cada momento difícil que has superado te ha hecho más fuerte y sabia.",
-      "❤️ Tu ejemplo de perseverancia inspira a todos los que te conocemos."
-    ];
+  function showCompletedCake(container) {
+    // Limpiar pasos anteriores
+    container.innerHTML = '';
     
-    alert(messages[memoryId - 1] || messages[0]);
+    // Mostrar pastel final con gran explosión
+    container.innerHTML = `
+      <div class="cake">🎂</div>
+      <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
+      <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
+      <button class="continue-btn" onclick="showExperience()">
+        ✨ ¡Ver la Sorpresa! ✨
+      </button>
+    `;
+    
+    // Gran explosión de confetti
+    createCakeConfetti();
   }
   
-  function showPhotoMessage(photoId) {
-    const photoMessages = [
-      "📸 Aquí estarían todas esas fotos donde se ve tu hermosa sonrisa",
-      "🌺 Esta representa todos los momentos floridos que has vivido",
-      "🎂 Por todos los cumpleaños que hemos celebrado juntos",
-      "💐 Por todas las flores que mereces recibir cada día"
-    ];
+  function createCakeConfetti() {
+    const sparklesContainer = document.querySelector('.sparkles');
+    for(let i = 0; i < 50; i++) {
+      setTimeout(() => {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        const confettiTypes = ['🎉', '🎊', '✨', '🌟', '🎂', '🎈'];
+        sparkle.textContent = confettiTypes[Math.floor(Math.random() * confettiTypes.length)];
+        sparkle.style.left = Math.random() * 100 + 'vw';
+        sparkle.style.top = Math.random() * 100 + 'vh';
+        sparkle.style.fontSize = (Math.random() * 25 + 20) + 'px';
+        sparklesContainer.appendChild(sparkle);
+        setTimeout(() => { sparkle.remove(); }, 3000);
+      }, i * 100);
+    }
+  }
+  
+  function showExperience() {
+    // Ocultar animación del pastel
+    document.getElementById('cakeAnimation').style.display = 'none';
     
-    alert(photoMessages[photoId - 1] || "💫 Un recuerdo especial guardado en el corazón");
+    // Mostrar pantalla de experiencia
+    document.getElementById('ingredientsScreen').classList.remove('active');
+    document.getElementById('experienceScreen').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  
+  function showPhotoInBox(photoId, boxElement) {
+    const contentDiv = boxElement.querySelector('.box-content');
+    const iconDiv = boxElement.querySelector('.box-icon');
+    const labelDiv = boxElement.querySelector('.box-label');
+    
+    if (contentDiv.style.display === 'none') {
+      // Mostrar la foto
+      contentDiv.style.display = 'block';
+      iconDiv.style.display = 'none';
+      labelDiv.style.display = 'none';
+      
+      // Agregar efecto especial
+      boxElement.style.transform = 'scale(1.05)';
+      boxElement.style.background = 'linear-gradient(145deg, #ff6b6b, #ffa500)';
+      
+    } else {
+      // Ocultar la foto y volver al estado original
+      contentDiv.style.display = 'none';
+      iconDiv.style.display = 'block';
+      labelDiv.style.display = 'block';
+      
+      boxElement.style.transform = 'scale(1)';
+      boxElement.style.background = 'linear-gradient(145deg, #4ecdc4, #44a08d)';
+    }
   }
   
   function goBack() {
@@ -599,6 +1037,18 @@
     document.querySelectorAll('.ingredient').forEach(ing => {
       ing.classList.remove('selected');
     });
+    
+    // Resetear constructor del pastel
+    document.getElementById('cakeBuilder').style.display = 'none';
+    document.querySelectorAll('.cake-layer').forEach((layer, index) => {
+      if (index === 0) {
+        layer.classList.add('active'); // Base de amor siempre visible
+      } else {
+        layer.classList.remove('active');
+      }
+    });
+    document.getElementById('progressFill').style.width = '0%';
+    
     updateUI();
     
     document.getElementById('experienceScreen').classList.remove('active');
